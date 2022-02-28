@@ -16,7 +16,7 @@
     font-size:90%;
     max-width:300px;
     padding:2%;
-    height:400px;
+    height:360px;
     overflow:scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
@@ -47,7 +47,27 @@
     margin-top:10px;
     margin-bottom:5px;
 }
-
 body{
     font-family: 'Open Sans', 'Open Sans', 'Open Sans','Open Sans';
+}
+.suggestionArea{
+    width:100%;
+    font-size:80%;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    display:flex;
+}
+.suggestionArea::-webkit-scrollbar{
+    display:hidden;
+}
+.suggestChips{
+    margin-left:4px;
+    margin-right:4px;
+    border: 1px solid black;
+    border-radius:20px 20px;
+    cursor:pointer;
+    padding-left:3%;
+    padding-right:3%;
 }
