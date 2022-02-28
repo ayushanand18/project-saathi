@@ -47,6 +47,7 @@ $chatSend.addEventListener('click',function(){
 helloPhrases = ['hello','hi','hey','heya','hii','namaste','heyy','hell']
 yesPhrases = ['yes','ya','y','yo']
 noPhrases = ['no','na','none','n']
+byePhrases = ['bye', 'ba bye','goodbye','nothing']
 
 function chatProcess(Context,userT,digcode16){
     if (Context == 'start' && helloPhrases.includes(userT.toLowerCase())==true){
@@ -75,7 +76,7 @@ function chatProcess(Context,userT,digcode16){
         Context = 'existingAddDesc'
     }
     else if (Context =='existingAddDesc'){
-        botT = 'Thank you for showing this much courage. You said aksjsakasjsa I am your friend, none of your information will be public in any case I promise. We do not ask for your personal data neither will we in future.<br/>\
+        botT = 'Thank you for showing this much courage. I am your friend, none of your information will be public in any case I promise. We do not ask for your personal data neither will we in future.<br/>\
         If you still want to add details please say yes. If you do not wish to reply with a no.'
         Context = 'attack.cnf.tellask'
         suggestionChips = ['No','Yes']
@@ -94,6 +95,11 @@ function chatProcess(Context,userT,digcode16){
         suggestionChips = ['Yes']
         Context = 'attack.cnf.16dgy'
     }
+    else if (Context =='attack.cnf.16dg' && noPhrases.includes(userT.toLowerCase())==true){
+        //$userSaying.disabled = false
+        botT = 'Thank you so much for getting to us. We are sad that you did not want to create a 16 digit code we wont be able to provide follow up support to you but never the less, take a long deep breath and build up same courage. Open up whatever you want to say, we will hear you. Please tell us.'
+        Context = 'attack.cnf.tell1'
+    }
     else if (Context =='attack.cnf.16dgy' && yesPhrases.includes(userT.toLowerCase())==true){
         //$userSaying.disabled = false
         botT = 'Thank you once again for holding down. Now take a long deep breath and build the courage! Open up whatever you have to speak about what happened to you. Do not hesitate, to add everything you want us to know. We have held your hand tightly, we are with you at every step! Please tell us.'
@@ -102,14 +108,15 @@ function chatProcess(Context,userT,digcode16){
     }
     else if (Context =='attack.cnf.tell1'){
         //$userSaying.disabled = false
-        botT = 'Thank you for showing this much courage. You said hhaahgsha I am your friend, none of your information will be public in any case I promise. We do not ask for your personal data neither will we in future.\
+        botT = 'Thank you for showing this much courage. I am your friend, none of your information will be public in any case I promise. We do not ask for your personal data neither will we in future.\
         If you still want to add details please say yes. If you do not wish so, reply with a no.'
         suggestionChips = ['No','Yes']
         Context = 'attack.cnf.tellask'
     }
-    else if (Context =='attack.cnf.tellask' && noPhrases.includes(userT.toLowerCase()==true)){
+    else if (Context =='attack.cnf.tellask' && noPhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you for trusting us! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. If you want human assistance please tap a yes. If no then type no.'
-        Context = ''
+        suggestionChips=['Yes','No']
+        Context = 'attack.cnf.comp'
     }
     else if (Context == 'attack.cnf.tellask' && yesPhrases.includes(userT.toLowerCase())==true){
         botT = 'Please move forward and speak up.'
@@ -124,17 +131,46 @@ function chatProcess(Context,userT,digcode16){
     else if (Context == 'attack.cnf.comp' && yesPhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you for providing your consent, your information will not be shared with the NGO now but in order for it to contact you we request you to please share your email id where out partner NGO (include a name here) might contact you. Your information will not be shared by us to the NGO until you allow us to, but the NGO will ask for your 16 digit code in its email. Only when you provide the code they will be able to access hear your ordeal.\
         Any harassment or bullying is criminal act. If you want us to report the matter to the legal authorities please say yes. Again your information will not be shared until you share your code with them. If you do not want this say a no.'
+        ngoUpdate(digcode16,'yes');
+        suggestionChips = ['Yes','No']
+        Context = 'attack.police.ask'
+    }
+    else if (Context == 'attack.cnf.comp' && noPhrases.includes(userT.toLowerCase())==true){
+        botT = 'We acknowledge your displeasure and accept it. Human assistance from our partner organization is safe and private. Your information will not be shared until you agree to. But if has been denied then we respect your opinion.\
+        Harassment or bullying of any kind is a criminal act. If you want us to provide you a legal assistance through police, please say yes or else say no.'
+        ngoUpdate(digcode16,'no');
         suggestionChips = ['Yes','No']
         Context = 'attack.police.ask'
     }
     else if (Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to.\
-        In case you want any other help from us please let us know. If nothing else, please say no and we will close this session for you.'
-        suggestionChips = ['Feedback','I want help','SOS']
+        In case you want any other help from us please let us know. If nothing else, please say "I have nothing" and we will close this session for you.'
+        policeUpdate(digcode16,'yes');
+        
         Context =  'start'
+    }
+    else if (Context == 'attack.police.ask' && noPhrases.includes(userT.toLowerCase())==true){
+        botT = 'Thank you for your response. We acknowledge that you do not want legal assistance through the police and we respect it. But when police try to help you through our way, we always make sure that there is no intimidation. Strong judicial oversight is always maintained through partner organizations. But never mind, in case you want to know anything else. Please let us know.'
+        policeUpdate(digcode16,'no');
+        Context =  'start'
+    }
+    else if (Context == 'start' && userT.toLowerCase() == 'i have nothing'){
+        botT = 'Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!'
+        Context = 'exit'
+    }
+    else if (Context == "start" && byePhrases.includes(userT.toLowerCase())==true){
+        botT = 'Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!'
+        suggestionChips = ['What is Saathi!']
+        Context = 'exit'
     }
     else {
         botT = 'Sorry, I cant get you!'
     }
     return [Context, botT, suggestionChips,digcode16]
+};
+function ngoUpdate(digcode16,status){
+    console.log(status+ ' given ngo consent for 16digcode: '+digcode16)
+};
+function policeUpdate(digcode16,status){
+    console.log(status + ' for police consent for 16digcode: '+digcode16)
 };
