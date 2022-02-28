@@ -22,8 +22,15 @@ function doItHere(e){
     $userSaying.value=e.target.getAttribute('val');
     $chatSend.click()
 }
-if (suggestionChips.length>0){
+if (suggestionChips.length==0){
     $suggestionArea.innerHTML=''
+    $userSaying.disabled=false
+    // $chatSend.disabled=false
+}
+else if (suggestionChips.length>0){
+    $suggestionArea.innerHTML=''
+    $userSaying.disabled=true
+    // $chatSend.disabled=true
 for (var i in suggestionChips){
     $suggestChip = document.createElement('div');
     $suggestChip.className='suggestChips';
@@ -36,6 +43,7 @@ for (var i in suggestionChips){
 }}
 // After every hit
 $chatSend.addEventListener('click',function(){
+    if ($userSaying.value!=''){
     $newBot = document.createElement('div');
     $newBot.id = 'newBot'
     $newUser = document.createElement('div');
@@ -54,15 +62,20 @@ $chatSend.addEventListener('click',function(){
     $userSaying.value=''
     $root.scrollTop = $root.scrollHeight;
     if (Context =='exit'){
-        $userSaying.value ='Thank you for interacting with us!'
+        $userSaying.placeholder ='Thank you for interacting with us!'
         $userSaying.disabled=true
-        $chatSend.disabled=true
-    }
-    if (suggestionChips.length==0){
         $suggestionArea.innerHTML=''
+        // $chatSend.disabled=true
     }
-    if (suggestionChips.length>0){
+    else if (suggestionChips.length==0){
         $suggestionArea.innerHTML=''
+        $userSaying.disabled=false
+       //  $chatSend.disabled=false
+    }
+    else if (suggestionChips.length>0){
+        $suggestionArea.innerHTML=''
+        $userSaying.disabled=true
+        // $chatSend.disabled=true
     for (var i in suggestionChips){
         $suggestChip = document.createElement('div');
         $suggestChip.className='suggestChips';
@@ -73,8 +86,7 @@ $chatSend.addEventListener('click',function(){
             doItHere(e)
         })
     }}
-    $userSaying.disabled=false
-    $chatSend.disabled=false
+} 
 });
 
 // Training phrases
@@ -88,19 +100,15 @@ function chatProcess(Context,userT,digcode16){
         botT = 'Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
         suggestionChips = ["Yes","No","I Have Already"]
         Context = 'attack.ask'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context == 'attack.ask' && yesPhrases.includes(userT.toLowerCase())==true) {
         botT = 'I totally understand your state of mind right now. And I am ready to help you out in the matter. But before we move, I would like to ask are you reporting for self or this happened to someone else? Although we encourage self reporting to provide better support.'
         suggestionChips = ['For Myself', 'For Someone else']
         Context = 'attack.cnfy'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context == 'attack.ask' && noPhrases.includes(userT.toLowerCase())==true) {
         botT = 'Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!'
-        suggestionChips = ['What is Saathi!']
+        suggestionChips = []
         Context = 'exit'
     }
     else if (Context == 'attack.ask' && userT.toLowerCase()=='i have already') {
@@ -109,6 +117,7 @@ function chatProcess(Context,userT,digcode16){
         suggestionChips=[]
     }
     else if (Context =='havealready16dig'){
+        suggestionChips=[]
         digcode16 = userT
         botT = 'Thank you for providing your 16 digit code. Please feel free to add any other details you remember to your earlier statement.'
         Context = 'existingAddDesc'
@@ -118,16 +127,12 @@ function chatProcess(Context,userT,digcode16){
         If you still want to add details please say yes. If you do not wish to reply with a no.'
         Context = 'attack.cnf.tellask'
         suggestionChips = ['No','Yes']
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context =='attack.cnfy' && ['For Myself', 'For Someone else'].includes(userT)==true){
         //$userSaying.disabled = false
         botT = 'We are holding your hand tightly at this time of your need. We would like to contact you back with a follow-up human or legal assistance for this we will be generating a 16 digit code which will popup after you confirm. This will help us connect with you without any personally identifiable information. Privacy is at the core of our app. Please say yes to proceed.'
         suggestionChips = ['Yes','No']
         Context = 'attack.cnf.16dg'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context =='attack.cnf.16dg' && yesPhrases.includes(userT.toLowerCase())==true){
         //$userSaying.disabled = false
@@ -136,53 +141,50 @@ function chatProcess(Context,userT,digcode16){
         botT = 'Here is your 16 digit code. <br/><strong><center>'+ digcode16+'</center></strong>Please copy it. If you are done please say yes.'
         suggestionChips = ['Yes']
         Context = 'attack.cnf.16dgy'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context =='attack.cnf.16dg' && noPhrases.includes(userT.toLowerCase())==true){
         //$userSaying.disabled = false
         botT = 'Thank you so much for getting to us. We are sad that you did not want to create a 16 digit code we wont be able to provide follow up support to you but never the less, take a long deep breath and build up same courage. Open up whatever you want to say, we will hear you. Please tell us.'
         Context = 'attack.cnf.tell1'
+        suggestionChips=[]
     }
     else if (Context =='attack.cnf.16dgy' && yesPhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you once again for holding down. Now take a long deep breath and build the courage! Open up whatever you have to speak about what happened to you. Do not hesitate, to add everything you want us to know. We have held your hand tightly, we are with you at every step! Please tell us.'
         Context = 'attack.cnf.tell1'
-
+        suggestionChips=[]
     }
     else if (Context =='attack.cnf.tell1'){
         botT = 'Thank you for showing this much courage. I am your friend, none of your information will be public in any case I promise. We do not ask for your personal data neither will we in future.\
         If you still want to add details please say yes. If you do not wish so, reply with a no.'
         suggestionChips = ['No','Yes']
         Context = 'attack.cnf.tellask'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context =='attack.cnf.tellask' && noPhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you for trusting us! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. If you want human assistance please tap a yes. If no then type no.'
         suggestionChips=['Yes','No']
         Context = 'attack.cnf.comp'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context == 'attack.cnf.tellask' && yesPhrases.includes(userT.toLowerCase())==true){
         botT = 'Please move forward and speak up.'
         Context = 'attack.cnf.tell2'
+        suggestionChips=[]
     }
     else if (Context == 'attack.cnf.tell2'){
         botT='Thank you for your details! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. If you want human assistance please tap a yes. If no then type no.'
         suggestionChips=['Yes','No']
         Context = 'attack.cnf.comp'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context == 'attack.cnf.comp' && yesPhrases.includes(userT.toLowerCase())==true){
-        botT = 'Thank you for providing your consent, your information will not be shared with the NGO now but in order for it to contact you we request you to please share your email id where out partner NGO (include a name here) might contact you. Your information will not be shared by us to the NGO until you allow us to, but the NGO will ask for your 16 digit code in its email. Only when you provide the code they will be able to access hear your ordeal.\
-        Any harassment or bullying is criminal act. If you want us to report the matter to the legal authorities please say yes. Again your information will not be shared until you share your code with them. If you do not want this say a no.'
-        ngoUpdate(digcode16,'yes');
+        botT = 'Thank you for providing your consent, your information will not be shared with the NGO now but in order for it to contact you we request you to please share your email id where out partner NGO (include a name here) might contact you. Your information will not be shared by us to the NGO until you allow us to, but the NGO will ask for your 16 digit code in its email. Only when you provide the code they will be able to access hear your ordeal.'
+        Context = 'attack.email.ngo'
+        suggestionChips=[]
+    }
+    else if(Context == 'attack.email.ngo'){
+        botT = 'Thank you so much! Any harassment or bullying is criminal act. If you want us to report the matter to the legal authorities please say yes. Again your information will not be shared until you share your code with them. If you do not want this say a no.'
+        userEmail = userT
+        ngoUpdate(digcode16,'yes',userEmail);
         suggestionChips = ['Yes','No']
         Context = 'attack.police.ask'
-        $userSaying.disabled=true
-        $chatSend.disabled=true
     }
     else if (Context == 'attack.cnf.comp' && noPhrases.includes(userT.toLowerCase())==true){
         botT = 'We acknowledge your displeasure and accept it. Human assistance from our partner organization is safe and private. Your information will not be shared until you agree to. But if has been denied then we respect your opinion.\
@@ -191,14 +193,26 @@ function chatProcess(Context,userT,digcode16){
         suggestionChips = ['Yes','No']
         Context = 'attack.police.ask'
         $userSaying.disabled=true
-        $chatSend.disabled=true
+        // $chatSend.disabled=true
     }
-    else if (Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true){
+    else if (Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true && userEmail!=null){
         botT = 'Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to.\
         In case you want any other help from us please let us know. If nothing else, please say "I have nothing" and we will close this session for you.'
-        policeUpdate(digcode16,'yes');
+        policeUpdate(digcode16,'yes',userEmail);
         suggestionChips=[]
         Context =  'start'
+    }
+    else if(Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true && userEmail==null){
+        botT = 'Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to. Please also provide your email so that we police can contact you.'
+        suggestionChips=[]
+        Context =  'police.email.ask'
+    }
+    else if(Context == 'police.email.ask'){
+        botT = 'In case you want any other help from us please let us know. If nothing else, please say "I have nothing" and we will close this session for you.'
+        userEmail = userT
+        policeUpdate(digcode16,'yes',userEmail);
+        suggestionChips=[]
+        Context='start'
     }
     else if (Context == 'attack.police.ask' && noPhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you for your response. We acknowledge that you do not want legal assistance through the police and we respect it. But when police try to help you through our way, we always make sure that there is no intimidation. Strong judicial oversight is always maintained through partner organizations. But never mind, in case you want to know anything else. Please let us know.'
@@ -213,7 +227,7 @@ function chatProcess(Context,userT,digcode16){
     }
     else if (Context == "start" && byePhrases.includes(userT.toLowerCase())==true){
         botT = 'Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!'
-        suggestionChips = ['What is Saathi!']
+        suggestionChips = []
         Context = 'exit'
     }
     else {
@@ -222,9 +236,9 @@ function chatProcess(Context,userT,digcode16){
     }
     return [Context, botT, suggestionChips,digcode16]
 };
-function ngoUpdate(digcode16,status){
-    console.log(status+ ' given ngo consent for 16digcode: '+digcode16)
+function ngoUpdate(digcode16,status,email){
+    console.log(status+ ' given ngo consent for 16digcode: '+digcode16+' email: '+email)
 };
-function policeUpdate(digcode16,status){
-    console.log(status + ' for police consent for 16digcode: '+digcode16)
+function policeUpdate(digcode16,status,email){
+    console.log(status + ' for police consent for 16digcode: '+digcode16+ ' email: '+email)
 };
