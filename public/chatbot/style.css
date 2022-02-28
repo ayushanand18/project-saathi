@@ -1,19 +1,21 @@
 #newBot{
     background-color:aliceblue;
-    padding:5px;
+    padding:9px;
     border:1px solid black;
-    width:90%;
+    width:80%;
 }
 #newUser{
     background-color: green;
     color:white;
-    padding:5px;
+    padding:9px;
     border:1px solid black;
-    width:90%;
+    width:80%;
     margin-left:8%;
 }
 .root{
+    font-size:90%;
     max-width:300px;
+    padding:2%;
     height:400px;
     overflow:scroll;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -26,10 +28,17 @@
     max-width:300px;
 }
 .textbox input[type="text"]{
-    width:80%;
+    width:78%;
+    font-family: 'Open Sans', sans-serif;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:4px;
 }
 .textbox button{
     width:16%;
+    font-family: 'Open Sans', sans-serif;
+    padding-top:5px;
+    padding-bottom:5px;
 }
 .chatbot{
     margin:10px;
@@ -37,4 +46,8 @@
 .chatbot div{
     margin-top:10px;
     margin-bottom:5px;
+}
+
+body{
+    font-family: 'Open Sans', 'Open Sans', 'Open Sans','Open Sans';
 }
