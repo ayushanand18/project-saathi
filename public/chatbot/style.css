@@ -37,7 +37,7 @@ h3{
     padding-bottom:0%;
     left:4%;
     right:5px;
-    height:calc(100vh - 160px);
+    height:calc(100vh - 155px);
     line-height:140%;
 }
 .root::-webkit-scrollbar {

@@ -9,7 +9,7 @@ Nishtha Bharadwaj
 - [x] Set Up Project
 - [x] Built Conversation flow
 - [x] Basic UI
-- [ ] UI Enhancement
+- [x] UI Enhancement
 - [ ] Speaker Output
 - [ ] Microphone intake
 - [ ] Debugging
