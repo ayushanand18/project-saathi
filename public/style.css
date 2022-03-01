@@ -8,20 +8,23 @@ body{
     color:white;
     margin:0px;
 }
+.spaceDiv{
+    height:calc(18vh);
+}
+.spacerDiv{
+    height:calc(24vh);
+}
 .main{
-    position:fixed;
-    bottom:30px;
-    left:15px;
-    right:0px;
+    max-width:400px;
 }
 .main .getStarted{
     background: white;
     color:rgba(240, 68, 96, 0.966);
     border:1px solid white;
     border-radius: 40px 40px;
-    padding:10px;
-    padding-left:20px;
-    padding-right:20px;
+    padding:12px;
+    padding-left:35px;
+    padding-right:35px;
     transition:all 0.3s ease;
     cursor:pointer;
     vertical-align: baseline;
@@ -32,11 +35,18 @@ body{
 }
 .desc{
     padding-bottom:4%;
-    padding-top:0px;
-    margin-top:0px;
     max-width: 190px;
+    text-align:justify;
+    font-size:90%;
 }
 .main h2{
-    margin-bottom:0px;
+    margin-bottom:10px;
     padding-bottom:2%;
+}
+.hr {
+    border:1px solid white;
+    border-radius:100px 100px;
+}
+.logo{
+    width:40px;
 }

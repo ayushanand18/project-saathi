@@ -3,7 +3,12 @@ $root = document.querySelector('.root');
 $chatSend = document.querySelector('.chatSend');
 $userSaying = document.querySelector('.userSaying');
 $suggestionArea = document.querySelector('.suggestionArea');
-$otherArea = document.querySelector('.otherArea');
+$otherArea = document.querySelector('.otherArea');$botAvatar = document.createElement('img');
+$botAvatar.setAttribute('src','https://cdn.iconscout.com/icon/premium/png-512-thumb/chatbot-2552857-2138474.png');
+$botAvatar.setAttribute('class','botAvatar');
+$userAvatar = document.createElement('img');
+$userAvatar.setAttribute('src','https://cdn.iconscout.com/icon/free/png-512/woman-1285-879839.png');
+$userAvatar.setAttribute('class','userAvatar');
 
 Context = 'attack.ask';
 digcode16 = '1111198198928298';
@@ -19,6 +24,7 @@ $newBot.id = 'newBot'
 var botT = 'Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
 suggestionChips=['Yes','No',"I Have Already"]
 $newBot.textContent = botT;
+$root.appendChild($botAvatar);
 $root.appendChild($newBot);
 function doItHere(e){
     $userSaying.value=e.target.getAttribute('val');
@@ -28,7 +34,6 @@ if (suggestionChips.length==0){
     $suggestionArea.innerHTML=''
     $userSaying.disabled=false
     $otherArea.style.display='block';
-    // $chatSend.disabled=false
 }
 else if (suggestionChips.length>0){
     $suggestionArea.innerHTML=''
@@ -48,12 +53,20 @@ for (var i in suggestionChips){
 // After every hit
 $chatSend.addEventListener('click',function(){
     if ($userSaying.value!=''){
+        $botAvatar = document.createElement('img');
+        $botAvatar.setAttribute('src','https://cdn.iconscout.com/icon/premium/png-512-thumb/chatbot-2552857-2138474.png');
+        $botAvatar.setAttribute('class','botAvatar');
+        $userAvatar = document.createElement('img');
+        $userAvatar.setAttribute('src','https://cdn.iconscout.com/icon/free/png-512/woman-1285-879839.png');
+        $userAvatar.setAttribute('class','userAvatar');
+
     $newBot = document.createElement('div');
     $newBot.id = 'newBot'
     $newUser = document.createElement('div');
     $newUser.id = 'newUser'
     userT = $userSaying.value
     $newUser.textContent = userT;
+    $root.appendChild($userAvatar);
     $root.appendChild($newUser);
     suggestionChips =[]
     lis = chatProcess(Context,userT,digcode16);
@@ -62,6 +75,7 @@ $chatSend.addEventListener('click',function(){
     suggestionChips = lis[2];
     digcode16 = lis[3];
     $newBot.innerHTML = botT;
+    $root.appendChild($botAvatar);
     $root.appendChild($newBot);
     $userSaying.value=''
     $root.scrollTop = $root.scrollHeight;
@@ -70,19 +84,16 @@ $chatSend.addEventListener('click',function(){
         $userSaying.disabled=true
         $otherArea.style.display='none'
         $suggestionArea.innerHTML=''
-        // $chatSend.disabled=true
     }
     else if (suggestionChips.length==0){
         $suggestionArea.innerHTML=''
         $userSaying.disabled=false
         $otherArea.style.display='block'
-       //  $chatSend.disabled=false
     }
     else if (suggestionChips.length>0){
         $suggestionArea.innerHTML=''
         $userSaying.disabled=true
         $otherArea.style.display='none'
-        // $chatSend.disabled=true
     for (var i in suggestionChips){
         $suggestChip = document.createElement('div');
         $suggestChip.className='suggestChips';
@@ -136,13 +147,11 @@ function chatProcess(Context,userT,digcode16){
         suggestionChips = ['No','Yes']
     }
     else if (Context =='attack.cnfy' && ['For Myself', 'For Someone else'].includes(userT)==true){
-        //$userSaying.disabled = false
         botT = 'We are holding your hand tightly at this time of your need. We would like to contact you back with a follow-up human or legal assistance for this we will be generating a 16 digit code which will popup after you confirm. This will help us connect with you without any personally identifiable information. Privacy is at the core of our app. Please say yes to proceed.'
         suggestionChips = ['Yes','No']
         Context = 'attack.cnf.16dg'
     }
     else if (Context =='attack.cnf.16dg' && yesPhrases.includes(userT.toLowerCase())==true){
-        //$userSaying.disabled = false
         digcode16 = new Date().getTime();
         digcode16 = digcode16.toString()+'234';
         botT = 'Here is your 16 digit code. <br/><strong><center>'+ digcode16+'</center></strong>Please copy it. If you are done please say yes.'
@@ -150,7 +159,6 @@ function chatProcess(Context,userT,digcode16){
         Context = 'attack.cnf.16dgy'
     }
     else if (Context =='attack.cnf.16dg' && noPhrases.includes(userT.toLowerCase())==true){
-        //$userSaying.disabled = false
         botT = 'Thank you so much for getting to us. We are sad that you did not want to create a 16 digit code we wont be able to provide follow up support to you but never the less, take a long deep breath and build up same courage. Open up whatever you want to say, we will hear you. Please tell us.'
         Context = 'attack.cnf.tell1'
         suggestionChips=[]
@@ -200,7 +208,6 @@ function chatProcess(Context,userT,digcode16){
         suggestionChips = ['Yes','No']
         Context = 'attack.police.ask'
         $userSaying.disabled=true
-        // $chatSend.disabled=true
     }
     else if (Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true && userEmail!=null){
         botT = 'Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to.\
