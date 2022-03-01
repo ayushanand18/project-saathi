@@ -1,3 +1,8 @@
+
+h3{
+    margin-bottom:0px;
+    padding-bottom:0px;
+}
 #newBot{
     background-color:aliceblue;
     padding:9px;
@@ -16,17 +21,32 @@
     font-size:90%;
     max-width:300px;
     padding:2%;
-    height:360px;
     overflow:scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
     padding-bottom:0%;
+    height:69%;
+    position:fixed;
+    left:4%;
+    right:5px;
 }
 .root::-webkit-scrollbar {
     display: none;
 }
 .textbox{
-    max-width:300px;
+    background:white;
+    position:fixed;
+    bottom:0px;
+    right:4%;
+    left:4%;
+}
+.main{
+    height:100%;
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:4%;
+    right:0px;
 }
 .textbox input[type="text"]{
     width:78%;
@@ -50,6 +70,9 @@
 }
 body{
     font-family: 'Open Sans', 'Open Sans', 'Open Sans','Open Sans';
+}
+html,body{
+    height:100%;
 }
 .suggestionArea{
     width:100%;
