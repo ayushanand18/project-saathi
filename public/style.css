@@ -1,0 +1,42 @@
+html{
+    height:100%;
+    background-color: rgba(240, 68, 96, 0.966);
+}
+body{
+    height:100%;
+    font-family: 'Open Sans','Open Sans','Open Sans',sans-serif;
+    color:white;
+    margin:0px;
+}
+.main{
+    position:fixed;
+    bottom:30px;
+    left:15px;
+    right:0px;
+}
+.main .getStarted{
+    background: white;
+    color:rgba(240, 68, 96, 0.966);
+    border:1px solid white;
+    border-radius: 40px 40px;
+    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    transition:all 0.3s ease;
+    cursor:pointer;
+    vertical-align: baseline;
+}
+.main .getStarted:hover{
+    background-color: rgba(243, 242, 242, 0.863)/*rgba(240, 68, 96, 0.966);*/
+    /*color:white;*/
+}
+.desc{
+    padding-bottom:4%;
+    padding-top:0px;
+    margin-top:0px;
+    max-width: 190px;
+}
+.main h2{
+    margin-bottom:0px;
+    padding-bottom:2%;
+}

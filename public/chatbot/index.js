@@ -3,6 +3,8 @@ $root = document.querySelector('.root');
 $chatSend = document.querySelector('.chatSend');
 $userSaying = document.querySelector('.userSaying');
 $suggestionArea = document.querySelector('.suggestionArea');
+$otherArea = document.querySelector('.otherArea');
+
 Context = 'attack.ask';
 digcode16 = '1111198198928298';
 function enterkey(e){ // enter key is send and clear the field
@@ -25,11 +27,13 @@ function doItHere(e){
 if (suggestionChips.length==0){
     $suggestionArea.innerHTML=''
     $userSaying.disabled=false
+    $otherArea.style.display='block';
     // $chatSend.disabled=false
 }
 else if (suggestionChips.length>0){
     $suggestionArea.innerHTML=''
     $userSaying.disabled=true
+    $otherArea.style.display='none'
     // $chatSend.disabled=true
 for (var i in suggestionChips){
     $suggestChip = document.createElement('div');
@@ -64,17 +68,20 @@ $chatSend.addEventListener('click',function(){
     if (Context =='exit'){
         $userSaying.placeholder ='Thank you for interacting with us!'
         $userSaying.disabled=true
+        $otherArea.style.display='none'
         $suggestionArea.innerHTML=''
         // $chatSend.disabled=true
     }
     else if (suggestionChips.length==0){
         $suggestionArea.innerHTML=''
         $userSaying.disabled=false
+        $otherArea.style.display='block'
        //  $chatSend.disabled=false
     }
     else if (suggestionChips.length>0){
         $suggestionArea.innerHTML=''
         $userSaying.disabled=true
+        $otherArea.style.display='none'
         // $chatSend.disabled=true
     for (var i in suggestionChips){
         $suggestChip = document.createElement('div');
