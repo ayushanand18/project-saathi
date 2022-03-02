@@ -13,6 +13,6 @@ Nishtha Bharadwaj
 - [ ] Speaker Output
 - [ ] Microphone intake
 - [ ] Debugging
-- [ ] Added DB integration
+- [x] Added DB integration
 - [ ] Admin Dashboard
 - [ ] Public Launch
