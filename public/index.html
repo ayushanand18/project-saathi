@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Project Saathi</title>
 
-    <!-- update the version number as needed -->
+  <!--
+    update the version number as needed
     <script defer src="/__/firebase/9.6.7/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
+    include only the Firebase features as you need
     <script defer src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-firestore-compat.js"></script>
@@ -17,12 +18,12 @@
     <script defer src="/__/firebase/9.6.7/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-performance-compat.js"></script>
+  -->
     <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
-    -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
+    -->
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
@@ -38,60 +39,23 @@
       }
     </style>
   </head>
-  <body>
+  <body style="height:100%, background-color:#464883">
     <div id="message">
-      <h2>Project Saathi</h2>
-      <h1>Project Saathi</h1>
-      <h5>Introduction</h5>
-      <p style="text-align:justify">
-        Helping support victims of bullying or harassment to gather courage and encourages self reporting through open disclosures using human-free interference.
-      </p>
-      <p>
-        <b>Collaborators:</b><br/>
-        Ayush Anand<br/>
-        Nishtha Bharadwaj
-      </p>
-      <a href="launch.html">Open Chatbot</a>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+      
+async function getWebpage(){
+  const response = await fetch('https://codegen.plasmic.app/api/v1/loader/html/preview/qAcfc4zbGcbMR1fEjgnv7b/Homepage',
+  {
+    headers: {
+      'x-plasmic-api-project-tokens': 'qAcfc4zbGcbMR1fEjgnv7b:YmdkKvSD5XmBoD0NhWQA3OuEHQvOPqsP72EpBIbmhW1jN7EDQpqfjgWipHUqj7CrNuae8XSenk2p8LxJotiLQ'
+    }
+  }
+  );
+  const result = await response.json()
+  document.body.innerHTML = result.html;
+}
+getWebpage();
+      </script>
   </body>
 </html>
