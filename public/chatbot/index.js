@@ -264,9 +264,9 @@ function chatProcess(Context,userT,digcode16){
 };
 function ngoUpdate(digcode16,status,email){
     db.collection("ngo").add({
-        status: status='yes'?true:false,
+        status: status=='yes'?true:false,
         time: new Date().getTime(),
-        email:email,
+        email:email==null?false:email,
         dgcode16:digcode16
     })
     .then((docRef) => {
@@ -280,7 +280,7 @@ function policeUpdate(digcode16,status,email){
     db.collection("police").add({
         status: status='yes'?true:false,
         time: new Date().getTime(),
-        email:email,
+        email:email==null?false:email,
         dgcode16:digcode16
     })
     .then((docRef) => {
