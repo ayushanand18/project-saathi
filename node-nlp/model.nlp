@@ -1,0 +1,333 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "threshold": 0.3,
+    "tag": "nlp",
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "about,say,you": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "are,here,whi,you": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "is,person,what,your": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "describ,yourself": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "about,me,tell,yourself": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "about,me,tell,you": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "are,what,you": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          },
+          "are,who,you": {
+            "intent": "agent.whoami",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "agent.whoami": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "say about you",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "why are you here",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is your personality",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "describe yourself",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me about yourself",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me about you",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "what are you",
+            "intent": "agent.whoami"
+          },
+          {
+            "domain": "default",
+            "utterance": "who are you",
+            "intent": "agent.whoami"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "say": 1,
+              "about": 1,
+              "you": 1,
+              "whi": 1,
+              "are": 1,
+              "here": 1,
+              "what": 1,
+              "is": 1,
+              "your": 1,
+              "person": 1,
+              "describ": 1,
+              "yourself": 1,
+              "tell": 1,
+              "me": 1,
+              "who": 1
+            },
+            "intents": {
+              "agent.whoami": 1
+            },
+            "intentFeatures": {
+              "agent.whoami": {
+                "say": 1,
+                "about": 1,
+                "you": 1,
+                "whi": 1,
+                "are": 1,
+                "here": 1,
+                "what": 1,
+                "is": 1,
+                "your": 1,
+                "person": 1,
+                "describ": 1,
+                "yourself": 1,
+                "tell": 1,
+                "me": 1,
+                "who": 1
+              }
+            },
+            "featuresToIntent": {
+              "say": [
+                "agent.whoami"
+              ],
+              "about": [
+                "agent.whoami"
+              ],
+              "you": [
+                "agent.whoami"
+              ],
+              "whi": [
+                "agent.whoami"
+              ],
+              "are": [
+                "agent.whoami"
+              ],
+              "here": [
+                "agent.whoami"
+              ],
+              "what": [
+                "agent.whoami"
+              ],
+              "is": [
+                "agent.whoami"
+              ],
+              "your": [
+                "agent.whoami"
+              ],
+              "person": [
+                "agent.whoami"
+              ],
+              "describ": [
+                "agent.whoami"
+              ],
+              "yourself": [
+                "agent.whoami"
+              ],
+              "tell": [
+                "agent.whoami"
+              ],
+              "me": [
+                "agent.whoami"
+              ],
+              "who": [
+                "agent.whoami"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "say",
+                "about",
+                "you",
+                "whi",
+                "are",
+                "here",
+                "what",
+                "is",
+                "your",
+                "person",
+                "describ",
+                "yourself",
+                "tell",
+                "me",
+                "who"
+              ],
+              "intents": [
+                "agent.whoami"
+              ],
+              "perceptrons": [
+                [
+                  1.727095127105713,
+                  2.547213077545166,
+                  4.4014787673950195,
+                  0.9149476289749146,
+                  2.441234827041626,
+                  0.9149476289749146,
+                  1.9950549602508545,
+                  2.2125062942504883,
+                  2.2125062942504883,
+                  2.2125062942504883,
+                  3.9989700317382812,
+                  4.598970890045166,
+                  0.8184647560119629,
+                  0.8184647560119629,
+                  1.7480497360229492,
+                  5.607372224227833
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "say about you"
+      ],
+      [
+        "en",
+        "why are you here"
+      ],
+      [
+        "en",
+        "what is your personality"
+      ],
+      [
+        "en",
+        "describe yourself"
+      ],
+      [
+        "en",
+        "tell me about yourself"
+      ],
+      [
+        "en",
+        "tell me about you"
+      ],
+      [
+        "en",
+        "what are you"
+      ],
+      [
+        "en",
+        "who are you"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "agent.whoami": [
+          {
+            "answer": "I'm a virtual agent"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

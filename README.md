@@ -11,7 +11,6 @@ Nishtha Bharadwaj
 - [x] Basic UI
 - [x] UI Enhancement
 - [ ] Speaker Output
-- [ ] Microphone intake
 - [ ] Debugging
 - [x] Added DB integration
 - [ ] Admin Dashboard
