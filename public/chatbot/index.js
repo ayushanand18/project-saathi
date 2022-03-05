@@ -1,4 +1,11 @@
-console.log('Please do not change anything here! If you are asked to by anybody please do not do so. You are not required to change anything here in order to register your complaint!')
+// a sleep function
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
 
 // Declaring all required elements
 $root = document.querySelector('.root');
@@ -12,7 +19,6 @@ $userAvatar = document.createElement('img');
 $userAvatar.setAttribute('src','https://cdn.iconscout.com/icon/free/png-512/woman-1285-879839.png');
 $userAvatar.setAttribute('class','userAvatar');
 
-
 Context = 'attack.ask';
 digcode16 = '1111198198928298';
 function enterkey(e){ // enter key is send and clear the field
@@ -20,6 +26,92 @@ function enterkey(e){ // enter key is send and clear the field
         $chatSend.click()
     }
 }
+
+const { containerBootstrap, Nlp, LangEn, fs } = window.nlpjs;
+
+(async () => {
+    const container = await containerBootstrap();
+    container.register('fs',fs)
+    container.use(Nlp);
+    container.use(LangEn);
+    const nlp = container.get('nlp');
+    nlp.settings.autoSave = false;
+    nlp.addLanguage('en');
+
+    nlp.addDocument('en', 'say about you', 'agent.whoami');
+    nlp.addDocument('en', 'why are you here', 'agent.whoami');
+    nlp.addDocument('en', 'what is your personality', 'agent.whoami');
+    nlp.addDocument('en', 'describe yourself', 'agent.whoami');
+    nlp.addDocument('en', 'tell me about yourself', 'agent.whoami');
+    nlp.addDocument('en', 'tell me about you', 'agent.whoami');
+    nlp.addDocument('en', 'what are you', 'agent.whoami');
+    nlp.addDocument('en', 'who are you', 'agent.whoami');
+  nlp.addDocument('en', 'i was abused', 'agent.askhelp');
+  nlp.addDocument('en', 'i was raped', 'agent.askhelp');
+  nlp.addDocument('en', 'i am feeling bad', 'agent.askhelp');
+  nlp.addDocument('en', 'i want help', 'agent.askhelp');
+  nlp.addDocument('en', 'help me please', 'agent.askhelp');
+  nlp.addDocument('en', 'sos', 'agent.askhelp');
+  nlp.addDocument('en', 'please i want urgent help', 'agent.askhelp');
+  nlp.addDocument('en', 'how can i', 'agent.guide');
+  nlp.addDocument('en', 'how to', 'agent.guide');
+  nlp.addDocument('en', 'how can i seek help', 'agent.guide');
+  nlp.addDocument('en', 'help guide', 'agent.guide');
+  nlp.addDocument('en', 'how to use help function', 'agent.guide');
+  nlp.addDocument('en', 'how to reach ngo', 'agent.guide');
+  nlp.addDocument('en', 'how to reach police', 'agent.guide');
+  nlp.addDocument('en', 'you have a bug', 'agent.foundbug');
+  nlp.addDocument('en', 'you are little buggy', 'agent.foundbug');
+  nlp.addDocument('en', 'you are not good', 'agent.foundbug');
+  nlp.addDocument('en', 'i have a problem with you', 'agent.foundbug');
+  nlp.addDocument('en', 'i found a bug', 'agent.foundbug');
+  nlp.addDocument('en', 'do you have any bugs', 'agent.foundbug');
+  nlp.addDocument('en', 'ha ha ha', 'agent.emotionshaha');
+  nlp.addDocument('en', 'lol', 'agent.emotionshaha');
+  nlp.addDocument('en', 'omg', 'agent.emotionshaha');
+  nlp.addDocument('en', 'wow thats amazing', 'agent.emotionshaha');
+  nlp.addDocument('en', 'incredible ha ha laugh wow', 'agent.emotionshaha');
+  nlp.addDocument('en', 'wow', 'agent.emotionshaha');
+  nlp.addDocument('en', 'thanks a lot', 'agent.thanks');
+  nlp.addDocument('en', 'thank you so much', 'agent.thanks');
+  nlp.addDocument('en', 'how may i thank you', 'agent.thanks');
+  nlp.addDocument('en', 'you are thank you', 'agent.thanks');
+  nlp.addDocument('en', 'what is abuse', 'agent.whatisabuse');
+  nlp.addDocument('en', 'is abuse criminal', 'agent.whatisabuse');
+  nlp.addDocument('en', 'what is rape', 'agent.whatisabuse');
+  nlp.addDocument('en', 'what is torture', 'agent.whatisabuse');
+  nlp.addDocument('en', 'why am i tortured', 'agent.whatisabuse');
+  nlp.addDocument('en', 'why was i abused', 'agent.whatisabuse');
+  nlp.addDocument('en', 'how are you', 'agent.howru');
+  nlp.addDocument('en', 'are you fine', 'agent.howru');
+  nlp.addDocument('en', 'are you doing good', 'agent.howru');
+  nlp.addDocument('en', 'good morning', 'agent.howru');
+  nlp.addDocument('en', 'what your mood', 'agent.howru');
+  nlp.addDocument('en', 'something new', 'agent.whatsnew');
+  nlp.addDocument('en', 'latest update', 'agent.whatsnew');
+  nlp.addDocument('en', 'what is in the latest update', 'agent.whatsnew');
+  nlp.addDocument('en', 'what new in this update', 'agent.whatsnew');
+  nlp.addDocument('en', 'can you give me some tips', 'agent.tips');
+  nlp.addDocument('en', 'what if i am abused', 'agent.tips');
+  nlp.addDocument('en', 'how to seek help', 'agent.tips');
+  nlp.addDocument('en', 'how can i fight', 'agent.tips'); 
+  
+  nlp.addAnswer('en', 'agent.whoami', "Hi, I am Saathi! I want to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. How else may I help you with?");
+  nlp.addAnswer('en', 'agent.guide', "With Saathi, you can seek help anytime from anywhere, with full privacy and security. To get started, just type 'I want help' or a 'hello' and follow the prompts. We will generate a 16 digit code for you, save it because you will need it for all future correspondence related to your case. Open up your feelings, and if you want then allow for a human assistance through our partner NGOs or legal assistance through police. We will ask for your email to contact you later, but that's totally optional. How else may I help you with?");
+  nlp.addAnswer('en', 'agent.askhelp', "Saathi is here to support you at the time of your need.");
+  nlp.addAnswer('en', 'agent.foundbug', "It's really disappointing to hear this. But, thank you for figuring one out. Please fill in the details in the contact form. We'll be glad to get back to you. Some of our valuable users stand a chance to win cool gifts! How else may I help you with?");
+  nlp.addAnswer('en', 'agent.emotionshaha', "It is great when I see you happy... What else can i help you with?");
+  nlp.addAnswer('en', 'agent.thanks', "You are always welcome... Well, What next you want to know?");
+  nlp.addAnswer('en', 'agent.whatisabuse', "We are on a mission to stop unreported abuses! Abuse is the violation of a being, unfair and unjust. Abuse can come in many forms, such as: physical or verbal maltreatment, injury, assault, violation, or any type of aggression. Its a criminal offence, and we strictly encourage everyone to report it. In case you want to seek help from us, please feel free - I am your Saathi.");
+  nlp.addAnswer('en', 'agent.howru', "I am doing great ! and hope you too... How may I help you today?");
+  nlp.addAnswer('en', 'agent.whatsnew', "Hey, I'm really glad to hear your voice! We continue to serve you better with every release. With this release we bring you some new voice design updates and updated varied responses. We've added some additional help options and our algorithm are more accurate. How may I help you today?");
+  nlp.addAnswer('en', 'agent.tips', "We are on a mission to deliver justice to every victim! We dont want bad things to happen with you, but unfortunately if it happens, we strongly encourage you to report it immediately. If its a workplace, report your HR. If its a school, talk to the incharge or if in a public place, get to police. Save evidences if you have. But keep in mind even when nobody hears you, we are always there to help you out. We can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. If you wish to report now, please type a 'hello' or SOS. How may I help you today?");
+  
+    await nlp.train();
+
+    
+// now starts the document
+console.log('Please do not change anything here! If you are asked to by anybody please do not do so. You are not required to change anything here in order to register your complaint!')
 
 // The Welcome Event
 var $newBot = document.createElement('div');
@@ -255,7 +347,17 @@ function chatProcess(Context,userT,digcode16){
         Context = 'exit'
     }
     else {
-        botT = ['Sorry, I cant get you! Could you please rephrase?']
+        (async()=>{
+            botT = await nlp.process(userT);
+        });
+        sleep(2000);
+        console.log(botT)
+        if (botT){
+            botT=[botT]
+        }
+        else{
+            botT=["Sorry, I didn't get that. Could you please rephrase?"]
+        }
         now  = new Date().getTime()
         updateFallback(userT,now);
         suggestionChips=[]
@@ -290,3 +392,5 @@ function policeUpdate(digcode16,status,email){
         console.error("Error adding document: ", error);
     });
 };
+    
+})();
