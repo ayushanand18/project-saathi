@@ -172,6 +172,11 @@ $chatSend.addEventListener('click',async function(){
         $newBot = document.createElement('div');
         $newBot.id = 'newBot'
         if (botT[k]){
+            if(botT[k]=='Saathi is here to support you at the time of your need.'){
+                botT[k]='Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
+                suggestionChips = ["Yes","No","I Have Already"]
+                Context = 'attack.ask'
+            }
             $newBot.innerHTML = botT[k];
         }
         else{
