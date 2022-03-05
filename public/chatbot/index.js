@@ -171,7 +171,12 @@ $chatSend.addEventListener('click',async function(){
     for (var k in botT){
         $newBot = document.createElement('div');
         $newBot.id = 'newBot'
-        $newBot.innerHTML = botT[k];
+        if (botT[k]){
+            $newBot.innerHTML = botT[k];
+        }
+        else{
+            $newBot.innerHTML = "Sorry, couldn't get you. Could you please rephrase?";
+        }
         $root.appendChild($newBot);
     }
     $userSaying.value=''
@@ -347,7 +352,7 @@ async function chatProcess(Context,userT,digcode16){
         Context = 'exit'
     }
     else {
-        boT = ['Couldn\'t get you please rephrase.']
+        boT = 'Couldn\'t get you please rephrase.'
         botTT = await nlp.process(userT);
         botT=[await botTT.answer]
         console.log(botT)
