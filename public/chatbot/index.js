@@ -146,7 +146,7 @@ for (var i in suggestionChips){
     })
 }}
 // After every hit
-$chatSend.addEventListener('click',function(){
+$chatSend.addEventListener('click',async function(){
     if ($userSaying.value!=''){
         $botAvatar = document.createElement('img');
         $botAvatar.setAttribute('src','https://cdn.iconscout.com/icon/premium/png-512-thumb/chatbot-2552857-2138474.png');
@@ -155,7 +155,6 @@ $chatSend.addEventListener('click',function(){
         $userAvatar.setAttribute('src','https://cdn.iconscout.com/icon/free/png-512/woman-1285-879839.png');
         $userAvatar.setAttribute('class','userAvatar');
 
-    
     $newUser = document.createElement('div');
     $newUser.id = 'newUser'
     userT = $userSaying.value
@@ -163,11 +162,11 @@ $chatSend.addEventListener('click',function(){
     $root.appendChild($userAvatar);
     $root.appendChild($newUser);
     suggestionChips =[]
-    lis = chatProcess(Context,userT,digcode16);
+    lis = await chatProcess(Context,userT,digcode16);
     Context= lis[0];
     botT = lis[1];
     suggestionChips = lis[2];
-    digcode16 = lis[3];
+    digcode16 = lis[3];    
     $root.appendChild($botAvatar);
     for (var k in botT){
         $newBot = document.createElement('div');
@@ -202,6 +201,7 @@ $chatSend.addEventListener('click',function(){
             doItHere(e)
         })
     }}
+    
 } 
 });
 
@@ -211,7 +211,7 @@ yesPhrases = ['yes','ya','y','yo']
 noPhrases = ['no','na','none','n']
 byePhrases = ['bye', 'ba bye','goodbye','nothing']
 
-function chatProcess(Context,userT,digcode16){
+async function chatProcess(Context,userT,digcode16){
     if (Context == 'start' && helloPhrases.includes(userT.toLowerCase())==true){
         botT = ['Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".']
         suggestionChips = ["Yes","No","I Have Already"]
@@ -347,17 +347,10 @@ function chatProcess(Context,userT,digcode16){
         Context = 'exit'
     }
     else {
-        (async()=>{
-            botT = await nlp.process(userT);
-        });
-        sleep(2000);
+        boT = ['Couldn\'t get you please rephrase.']
+        botTT = await nlp.process(userT);
+        botT=[await botTT.answer]
         console.log(botT)
-        if (botT){
-            botT=[botT]
-        }
-        else{
-            botT=["Sorry, I didn't get that. Could you please rephrase?"]
-        }
         now  = new Date().getTime()
         updateFallback(userT,now);
         suggestionChips=[]
