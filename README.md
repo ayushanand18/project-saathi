@@ -11,7 +11,7 @@ Nishtha Bharadwaj
 - [x] Basic UI
 - [x] UI Enhancement
 - [ ] Speaker Output
-- [ ] Debugging
+- [x] Debugging
 - [x] Added DB integration
 - [ ] Admin Dashboard
 - [ ] Public Launch

@@ -57,17 +57,28 @@ h3{
     right:0px;
 }
 .textbox input[type="text"]{
-    width:78%;
+    width:80%;
     font-family: 'Roboto', sans-serif;
     padding-top:5px;
     padding-bottom:5px;
-    padding-left:4px;
+    padding-left:8px;
+    padding-right:8px;
 }
 .textbox button{
-    width:16%;
+    width:8%;
+    fill:#2c5eff;
+    position: relative;
     font-family: 'Roboto', sans-serif;
-    padding-top:5px;
-    padding-bottom:5px;
+    padding: 0px;
+    z-index:2;
+    bottom:-8px;
+    background-color: white;
+    border: none;
+    max-height: 18px;
+    cursor: pointer;
+}
+.textbox button:hover{
+    fill:#5b80fa;
 }
 .chatbot{
     margin:10px;
