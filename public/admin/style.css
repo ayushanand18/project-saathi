@@ -1,0 +1,12 @@
+body{
+    font-family: 'Roboto Roboto Roboto';
+}
+span{
+    padding:5px;
+}
+summary{
+    font-size:22px;
+}
+.fallbackChild, .ordealChild, .policeChild, .ngoChild{
+    padding-bottom:10px;
+}

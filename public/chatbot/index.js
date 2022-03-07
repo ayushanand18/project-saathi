@@ -181,6 +181,7 @@ $chatSend.addEventListener('click',async function(){
         }
         else{
             $newBot.innerHTML = "Sorry, couldn't get you. Could you please rephrase?";
+            updateFallback(userT,now);
         }
         $root.appendChild($newBot);
     }
@@ -210,8 +211,7 @@ $chatSend.addEventListener('click',async function(){
         $suggestChip.addEventListener('click', function(e){
             doItHere(e)
         })
-    }}
-    
+    }}   
 } 
 });
 
@@ -362,7 +362,6 @@ async function chatProcess(Context,userT,digcode16){
         botT=[await botTT.answer]
         console.log(botT)
         now  = new Date().getTime()
-        updateFallback(userT,now);
         suggestionChips=[]
     }
     return [Context, botT, suggestionChips,digcode16]
@@ -395,5 +394,4 @@ function policeUpdate(digcode16,status,email){
         console.error("Error adding document: ", error);
     });
 };
-    
 })();

@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="style.css" />
     <title>Admin Dashboard | Project Saathi</title>
 </head>
+
 <body>
     <h1>Admin Dashboard | Project Saathi</h1>
     <div class="content">
-        <h2>Fallback Details</h2>
-        <div class="fallbacksDiv"></div>
-        <h2>NGO Consent</h2>
-        <div class="ngoDiv"></div>
-        <h2>Police Consent</h2>
-        <div class="policeDiv"></div>
-        <h2>Ordeal Details</h2>
-        <div class="ordealDiv"></div>
+        <details>
+            <summary>Fallback Details</summary>
+            <div class="fallbacksDiv"></div>
+        </details>
+        <details>
+            <summary>NGO Consent</summary>
+            <div class="ngoDiv"></div>
+        </details>
+        <details>
+            <summary>Police Consent</summary>
+            <div class="policeDiv"></div>
+        </details>
+        <details>
+            <summary>Ordeal Details</summary>
+            <div class="ordealDiv"></div>
+        </details>
     </div>
+    <details>
+        <summary>Login to Auth 2.0</summary>
+        <div class="authapp">
+            <input type="email" class="email" placeholder="Enter Email"/>
+            <input type="password" class="password" placeholder="Enter Password"/>
+            <input type="button" value="Login" class="buttonLogin"/>
+            <input type="button" value="Logout" class="buttonLogout" style="display:none"/>
+        </div>
+    </details>
 </body>
+<script src="index.js" type="module"></script>
 </html>

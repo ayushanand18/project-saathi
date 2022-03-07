@@ -13,5 +13,6 @@ Nishtha Bharadwaj
 - [ ] Speaker Output
 - [x] Debugging
 - [x] Added DB integration
-- [ ] Admin Dashboard
+- [x] Admin Dashboard
+- [x] Alpha Launch
 - [ ] Public Launch
