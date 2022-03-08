@@ -10,7 +10,6 @@ Nishtha Bharadwaj
 - [x] Built Conversation flow
 - [x] Basic UI
 - [x] UI Enhancement
-- [ ] Speaker Output
 - [x] Debugging
 - [x] Added DB integration
 - [x] Admin Dashboard

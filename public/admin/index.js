@@ -26,7 +26,7 @@ async function updateFallbacks(){
     var $userT =document.createElement('span');
     var $time =document.createElement('span');
     $userT.innerHTML ='<b>User Text</b>: ' + doc.data().userT;
-    $time.innerHTML ='<b>Time</b>: ' + Date(doc.data().time);
+    $time.innerHTML ='<b>Time</b>: ' + new Date(doc.data().time).toString();
     $newDiv.appendChild($userT);
     $newDiv.appendChild($time);
     $fallbacksDiv.appendChild($newDiv);
@@ -45,7 +45,7 @@ async function updateNGO(){
     $dgcode16.innerHTML = '<b>16 Digit Code</b>: ' +doc.data().dgcode16;
     $email.innerHTML = '<b>Email</b>: ' + doc.data().email;
     $status.innerHTML = '<b>Status</b>: ' + doc.data().status;
-    $time.innerHTML = '<b>Time</b>: ' + Date(doc.data().time);
+    $time.innerHTML = '<b>Time</b>: ' + new Date(doc.data().time).toString();
     $newDiv.appendChild($dgcode16);
     $newDiv.appendChild($email);
     $newDiv.appendChild($status);
@@ -66,7 +66,7 @@ async function updatePolice(){
     $dgcode16.innerHTML = '<b>16 Digit Code</b>: ' +doc.data().dgcode16;
     $email.innerHTML = '<b>Email</b>: ' +doc.data().email;
     $status.innerHTML = '<b>Status</b>: ' +doc.data().status;
-    $time.innerHTML ='<b>Time</b>: ' + Date(doc.data().time);
+    $time.innerHTML ='<b>Time</b>: ' + new Date(doc.data().time).toString();
     $newDiv.appendChild($dgcode16);
     $newDiv.appendChild($email);
     $newDiv.appendChild($status);
@@ -85,7 +85,7 @@ async function updateOrdeal(){
     var $time = document.createElement('span');
     $dgcode16.innerHTML ='<b>16 Digit Code</b>: ' + doc.data().dgcode16;
     $userT.innerHTML = '<b>User Text</b>: ' +doc.data().userT;
-    $time.innerHTML = '<b>Time</b>: ' +Date(doc.data().time);
+    $time.innerHTML = '<b>Time</b>: ' + new Date(doc.data().time).toString();
     $newDiv.appendChild($dgcode16);
     $newDiv.appendChild($userT);
     $newDiv.appendChild($time);
