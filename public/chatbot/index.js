@@ -220,6 +220,7 @@ helloPhrases = ['hello','hi','hey','heya','hii','namaste','heyy','hell']
 yesPhrases = ['yes','ya','y','yo']
 noPhrases = ['no','na','none','n']
 byePhrases = ['bye', 'ba bye','goodbye','nothing']
+var userEmail;
 
 async function chatProcess(Context,userT,digcode16){
     if (Context == 'start' && helloPhrases.includes(userT.toLowerCase())==true){
@@ -382,7 +383,7 @@ function ngoUpdate(digcode16,status,email){
 };
 function policeUpdate(digcode16,status,email){
     db.collection("police").add({
-        status: status='yes'?true:false,
+        status: status=='yes'?true:false,
         time: new Date().getTime(),
         email:email==null?false:email,
         dgcode16:digcode16
