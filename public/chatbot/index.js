@@ -95,7 +95,13 @@ const { containerBootstrap, Nlp, LangEn, fs } = window.nlpjs;
   nlp.addDocument('en', 'what if i am abused', 'agent.tips');
   nlp.addDocument('en', 'how to seek help', 'agent.tips');
   nlp.addDocument('en', 'how can i fight', 'agent.tips'); 
-  
+  nlp.addDocument('en', 'how to delete my data','agent.deleteData');
+  nlp.addDocument('en', 'delete my data whatever you have','agent.deleteData');
+  nlp.addDocument('en' , 'who created you', 'agent.creator');
+  nlp.addDocument('en' , 'who made you', 'agent.creator');
+  nlp.addDocument('en' , 'who developed you who are the developers', 'agent.creator');
+  nlp.addDocument('en' , 'tell me about your owner', 'agent.creator');
+
   nlp.addAnswer('en', 'agent.whoami', "Hi, I am Saathi! I want to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. How else may I help you with?");
   nlp.addAnswer('en', 'agent.guide', "With Saathi, you can seek help anytime from anywhere, with full privacy and security. To get started, just type 'I want help' or a 'hello' and follow the prompts. We will generate a 16 digit code for you, save it because you will need it for all future correspondence related to your case. Open up your feelings, and if you want then allow for a human assistance through our partner NGOs or legal assistance through police. We will ask for your email to contact you later, but that's totally optional. How else may I help you with?");
   nlp.addAnswer('en', 'agent.askhelp', "Saathi is here to support you at the time of your need.");
@@ -106,8 +112,10 @@ const { containerBootstrap, Nlp, LangEn, fs } = window.nlpjs;
   nlp.addAnswer('en', 'agent.howru', "I am doing great ! and hope you too... How may I help you today?");
   nlp.addAnswer('en', 'agent.whatsnew', "Hey, I'm really glad to hear your voice! We continue to serve you better with every release. With this release we bring you some new voice design updates and updated varied responses. We've added some additional help options and our algorithm are more accurate. How may I help you today?");
   nlp.addAnswer('en', 'agent.tips', "We are on a mission to deliver justice to every victim! We dont want bad things to happen with you, but unfortunately if it happens, we strongly encourage you to report it immediately. If its a workplace, report your HR. If its a school, talk to the incharge or if in a public place, get to police. Save evidences if you have. But keep in mind even when nobody hears you, we are always there to help you out. We can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. If you wish to report now, please type a 'hello' or SOS. How may I help you today?");
+  nlp.addAnswer('en','agent.deleteData', "We appreciate your request for deleting your data, but we want to make sure that we never collect any personally identifiabile data anytime you talk to us but only your email when you provide us for partner assistance. If you want to use delete any of your data we have, please fill out the form available on our homepage. How may I help you next?")
+  nlp.addAnswer('en','agent.creator', "Two noble people on Earth created me with the goal of stopping unreported abuses. Thank you for asking about me! I'm Saathi Bot - always there to help you out. How may I help you? ")
   
-    await nlp.train();
+  await nlp.train();
 
     
 // now starts the document
@@ -117,7 +125,7 @@ console.log('Please do not change anything here! If you are asked to by anybody 
 var $newBot = document.createElement('div');
 $newBot.id = 'newBot'
 var botT = 'Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
-suggestionChips=['Yes','No',"I Have Already"]
+suggestionChips=['Yes','No',"I Have Already", "Skip"]
 $newBot.textContent = botT;
 $root.appendChild($botAvatar);
 $root.appendChild($newBot);
@@ -174,7 +182,7 @@ $chatSend.addEventListener('click',async function(){
         if (botT[k]){
             if(botT[k]=='Saathi is here to support you at the time of your need.'){
                 botT[k]='Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
-                suggestionChips = ["Yes","No","I Have Already"]
+                suggestionChips = ["Yes","No","I Have Already","Skip"]
                 Context = 'attack.ask'
             }
             $newBot.innerHTML = botT[k];
@@ -225,8 +233,13 @@ var userEmail;
 async function chatProcess(Context,userT,digcode16){
     if (Context == 'start' && helloPhrases.includes(userT.toLowerCase())==true){
         botT = ['Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".']
-        suggestionChips = ["Yes","No","I Have Already"]
+        suggestionChips = ["Yes","No","I Have Already", "Skip"]
         Context = 'attack.ask'
+    }
+    else if (Context == 'attack.ask' && userT == "Skip"){
+        botT = ["We are on a mission to stop unreported abuses! With Saathi, you can report abuse instances and we will help you out in every possible way. You enquire us about tips to fight abuse or can lodge a complaint. How may I help you today?"]
+        suggestionChips=[]
+        Context='start'
     }
     else if (Context == 'attack.ask' && yesPhrases.includes(userT.toLowerCase())==true) {
         botT = ['I totally understand your state of mind right now. And I am ready to help you out in the matter. But before we move, I would like to ask are you reporting for self or this happened to someone else? Although we encourage self reporting to provide better support.']

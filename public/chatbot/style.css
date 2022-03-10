@@ -38,6 +38,7 @@ h3{
     right:5px;
     height:calc(95vh - 9em);
     line-height:140%;
+    scroll-behavior: smooth; 
 }
 .root::-webkit-scrollbar {
     display: none;
@@ -90,8 +91,12 @@ h3{
 body{
     font-family: 'Roboto', 'Roboto', 'Roboto','Roboto';
 }
-html,body{
+body{
     height:93%;
+}
+html{
+    height:93%;
+    scroll-behavior: smooth; 
 }
 .suggestionArea{
     width:100%;
