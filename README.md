@@ -40,6 +40,21 @@ Saathi is unparalleled and useful and the features which advantage the innovatio
 + NodeJS
 + NLP.JS
 
+## Installation Instructions
+You can visit the [Live Demo](#live-demo) to view the app directly without any need of installation.\
+If you are working on a local workstation follow the instructions to use this app.
++ Method 1: Downloading the ZIP from GitHub web.\
+**Step 1.** Download the ZIP archive of this repo on your local computer.\
+**Step 2.** On your local computer, unzip the archive.
++ Method 2: Using 'git' to clone the repo.\
+**Step 1.** Install git on your pc if not already (Here's a help from [GitHub](https://github.com/git-guides/install-git)).\
+**Step 2:** Run git clone https://github.com/ayushanand18/project-saathi\
+
++ Next Steps\
+**Step 3:** Navigate to the root directory of the project (on your local system).\
+**Step 4:** Navigate to the `public` folder.\
+**Step 5:** Open `index.html` on your browser.
+
 ## Contributors
 Ayush Anand (Development)\
 Nishtha Bharadwaj (Testing and Documentation)
