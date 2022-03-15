@@ -22,13 +22,13 @@ Step4: Only the email id will be forwarded directly to legal authorities to init
 
 ## Innovative
 Saathi is unparalleled and useful and the features which advantage the innovation that lies within the core of project are:
++ Privacy at its core
 + Free of charge
 + Fast and Quick with response
-+ Safeguards privacy
-+ Evaluates and categorize user’s ordeal
 + Promotes justice and peace
 + Promotes gender equality
 + Reduces cyber bullying
++ Evaluates and categorize user’s ordeal (planned, to be introduced in future release)
 
 ## Technologies Used
 **Google:**
@@ -76,6 +76,7 @@ We are working on some possible enhancements but they are taking more time than 
 - [ ] Named Entity Recognition from descriptions of victims e.g. place of assault, age, demographics, etc to better help policing and policy making.
 - [ ] Visualization of insights from the decriptions of victims.
 - [ ] Categorization of abuse types using ML (TensorFlow).
+- [ ] Enabling Live human agent support (on request).
 
 ## References
 1. https://www.indiaspend.com/1-in-10-indian-adolescents-faces-cyberbullying-half-dont-report-study/
