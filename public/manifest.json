@@ -1,0 +1,41 @@
+{
+    "name": "Saathi - Your help in need!",
+    "short_name": "Saathi",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#F4F4F4",
+    "theme_color": "#F4F4F4", 
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "images/logo-72x72.jpg",
+        "type": "image/jpg", 
+        "sizes": "72x72"
+      },
+      {
+        "src": "images/logo-96x96.jpg",
+        "type": "image/jpg",
+        "sizes": "96x96"
+      },
+      {
+        "src": "images/logo-128x128.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      },
+      {
+        "src": "images/logo-144x144.jpg",
+        "type": "image/jpg",
+        "sizes": "144x144"
+      },
+      {
+        "src": "images/logo-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "images/logo-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
