@@ -1,6 +1,5 @@
-# project-saathi
+# Project Saathi
 
-*Project Saathi for Google Developer Students Club Solution Challenge 2022*
 ## Introduction
 According to recent studies, 1 In 10 Indian Adolescents Faces Cyber Bullying, half don’t report [1].  Another survey conducted by National Family Health Survey (NFHS) conducted in 2015-16 and compiled by NCRB shows that  estimated 99.1% of sexual violence cases are not reported [2]. And there are many other surveys about unreported abuse cases.
 The common reason found behind all these unreported cases is the hesitation of the victim to open up to others for asking help which is further strengthened due to personal reasons.  
@@ -30,6 +29,9 @@ Saathi is unparalleled and useful and the features which advantage the innovatio
 + Reduces cyber bullying
 + Evaluates and categorize user’s ordeal (planned, to be introduced in future release)
 
+## Conversation Flow
+<img width="877" alt="conversation_flow_saathi" src="https://user-images.githubusercontent.com/36472216/160288116-185902ae-683e-4ced-a21d-9fe9de51c4fd.png">
+
 ## Technologies Used
 **Google:**
 + Firebase (Firestore, Hosting)
@@ -55,21 +57,15 @@ If you are working on a local workstation follow the instructions to use this ap
 **Step 4:** Navigate to the `public` folder.\
 **Step 5:** Open `index.html` on your browser.
 
+## Live Demo
+The PWA is love on [https://project-saathi-43be5.web.app/](https://project-saathi-43be5.web.app/), Thanks to Firebase Hosting and [Plasmic](https://plasmic.app/)!
+
+## Collaborations
+We are open to collaborating with interested NGOs working to eliminate gender-based crimes.
+
 ## Contributors
 Ayush Anand (Development)\
 Nishtha Bharadwaj (Testing and Documentation)
-
-## Checklist
-- [x] Set Up Project
-- [x] Built Conversation flow
-- [x] Basic UI
-- [x] UI Enhancement
-- [x] Debugging
-- [x] Added DB integration
-- [x] Admin Dashboard
-- [x] Alpha Launch
-- [ ] PWA (near end of March)
-- [ ] Public Launch (after PWA)
 
 ## Future Enhancements
 We are working on some possible enhancements but they are taking more time than the hackathon.\
