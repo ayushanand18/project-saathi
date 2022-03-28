@@ -58,14 +58,14 @@ If you are working on a local workstation follow the instructions to use this ap
 **Step 5:** Open `index.html` on your browser.
 
 ## Live Demo
-The PWA is love on [https://project-saathi-43be5.web.app/](https://project-saathi-43be5.web.app/), Thanks to Firebase Hosting and [Plasmic](https://plasmic.app/)!
+The PWA is live on [https://project-saathi-43be5.web.app/](https://project-saathi-43be5.web.app/), Thanks to Firebase Hosting and [Plasmic](https://plasmic.app/)!
 
 ## Collaborations
 We are open to collaborating with interested NGOs working to eliminate gender-based crimes.
 
 ## Contributors
 Ayush Anand (Development)\
-Nishtha Bharadwaj (Testing and Documentation)
+Nishtha Bhardwaj (Testing and Documentation)
 
 ## Future Enhancements
 We are working on some possible enhancements but they are taking more time than the hackathon.\
