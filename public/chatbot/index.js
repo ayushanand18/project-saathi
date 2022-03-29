@@ -102,7 +102,7 @@ const { containerBootstrap, Nlp, LangEn, fs } = window.nlpjs;
   nlp.addDocument('en' , 'who developed you who are the developers', 'agent.creator');
   nlp.addDocument('en' , 'tell me about your owner', 'agent.creator');
 
-  nlp.addAnswer('en', 'agent.whoami', "Hi, I am Saathi! I want to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. How else may I help you with?");
+  nlp.addAnswer('en', 'agent.whoami', "Hi, I am Saathi! I want to empower every person to open up about their unpleasant situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. How else may I help you with?");
   nlp.addAnswer('en', 'agent.guide', "With Saathi, you can seek help anytime from anywhere, with full privacy and security. To get started, just type 'I want help' or a 'hello' and follow the prompts. We will generate a 16 digit code for you, save it because you will need it for all future correspondence related to your case. Open up your feelings, and if you want then allow for a human assistance through our partner NGOs or legal assistance through police. We will ask for your email to contact you later, but that's totally optional. How else may I help you with?");
   nlp.addAnswer('en', 'agent.askhelp', "Saathi is here to support you at the time of your need.");
   nlp.addAnswer('en', 'agent.foundbug', "It's really disappointing to hear this. But, thank you for figuring one out. Please fill in the details in the contact form. We'll be glad to get back to you. Some of our valuable users stand a chance to win cool gifts! How else may I help you with?");
@@ -124,7 +124,7 @@ console.log('Please do not change anything here! If you are asked to by anybody 
 // The Welcome Event
 var $newBot = document.createElement('div');
 $newBot.id = 'newBot'
-var botT = 'Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
+var botT = 'Hello! This is Saathi, your helping hand in need! I know you might not be feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed any harassment, please nod a yes for my help. Or if you had contacted us previously and have a 16 digit code, please say "I have already".'
 suggestionChips=['Yes','No',"I Have Already", "Skip"]
 $newBot.textContent = botT;
 $root.appendChild($botAvatar);
@@ -181,14 +181,14 @@ $chatSend.addEventListener('click',async function(){
         $newBot.id = 'newBot'
         if (botT[k]){
             if(botT[k]=='Saathi is here to support you at the time of your need.'){
-                botT[k]='Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".'
+                botT[k]='Hello! This is Saathi, your helping hand in need! I know you might not be feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed any harassment, please nod a yes for my help. Or if you had contacted us previously and have a 16 digit code, please say "I have already".'
                 suggestionChips = ["Yes","No","I Have Already","Skip"]
                 Context = 'attack.ask'
             }
             $newBot.innerHTML = botT[k];
         }
         else{
-            $newBot.innerHTML = "Sorry, couldn't get you. Could you please rephrase?";
+            $newBot.innerHTML = "Sorry, I couldn't get you. Could you please rephrase?";
             updateFallback(userT,now);
         }
         $root.appendChild($newBot);
@@ -232,51 +232,52 @@ var userEmail;
 
 async function chatProcess(Context,userT,digcode16){
     if (Context == 'start' && helloPhrases.includes(userT.toLowerCase())==true){
-        botT = ['Hello! This is Saathi, your helping hand in need. I know you might not feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed a harassment please nod a yes for my help. Or If you have contacted us already and have digit code please say "I have already".']
+        botT = ['Hello! This is Saathi, your helping hand in need. I know you might not be feeling well at the moment, but please feel free to talk to me. If you are offended, or witnessed any harassment, please nod a yes for my help. Or if you had contacted us previously and have a 16 digit code, please say "I have already".']
         suggestionChips = ["Yes","No","I Have Already", "Skip"]
         Context = 'attack.ask'
     }
     else if (Context == 'attack.ask' && userT == "Skip"){
-        botT = ["We are on a mission to stop unreported abuses! With Saathi, you can report abuse instances and we will help you out in every possible way. You enquire us about tips to fight abuse or can lodge a complaint. How may I help you today?"]
+        botT = ["We are on a mission to stop unreported abuses! With Saathi, you can report abuse instances and we will help you out in every possible way. You can also enquire us about tips to fight abuse or can lodge a complaint. How may I help you today?"]
         suggestionChips=[]
         Context='start'
     }
     else if (Context == 'attack.ask' && yesPhrases.includes(userT.toLowerCase())==true) {
-        botT = ['I totally understand your state of mind right now. And I am ready to help you out in the matter. But before we move, I would like to ask are you reporting for self or this happened to someone else? Although we encourage self reporting to provide better support.']
+        botT = ['I totally understand your state of mind right now. And I am ready to help you out in the matter. But before we move, I would like to ask, <b>are you reporting for self or this happened to someone else?</b> We encourage self reporting to provide the best support.']
         suggestionChips = ['For Myself', 'For Someone else']
         Context = 'attack.cnfy'
     }
     else if (Context == 'attack.ask' && noPhrases.includes(userT.toLowerCase())==true) {
-        botT = ['Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!']
+        botT = ['Thank you for reaching us! Team Saathi wants to empower every person to open up about about their unpleasant situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but we can also connect you with our partner NGOs for human assistance and can also help reporting it to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!']
         suggestionChips = []
         Context = 'exit'
     }
     else if (Context == 'attack.ask' && userT.toLowerCase()=='i have already') {
-        botT = ['Alright. We are hoping that you are feeling better than the last time we had you. Please input the 16 digit code.']
+        botT = ['Alright. We are hope that you are feeling better than the last time we had you. <b>Please input the 16 digit code.</b>']
         Context = 'havealready16dig'
         suggestionChips=[]
     }
     else if (Context =='havealready16dig'){
         suggestionChips=[]
         digcode16 = userT
-        botT = ['Thank you for providing your 16 digit code. Please feel free to add any other details you remember to your earlier statement.']
+        botT = ['Thank you for providing your 16 digit code. Please feel free to add any other detail you remember to your previous statement.']
         Context = 'existingAddDesc'
     }
     else if (Context =='existingAddDesc'){
-        botT = ['Thank you for showing this much courage. I am your friend, none of your information will be public in any case I promise. We do not ask for your personal data neither will we in future.<br/>',
-        'If you still want to add details please say yes. If you do not wish to reply with a no.']
+        botT = ['Thank you for showing this much courage. I am your friend, none of your information will be public without your consent. We never ask for your personal data neither will we in future.<br/>',
+        '<b>If you still want to add details, please say yes. If you do not wish to, reply with a no.</b>']
         Context = 'attack.cnf.tellask'
         suggestionChips = ['No','Yes']
     }
     else if (Context =='attack.cnfy' && ['For Myself', 'For Someone else'].includes(userT)==true){
-        botT = ['We are holding your hand tightly at this time of your need. We would like to contact you back with a follow-up human or legal assistance for this we will be generating a 16 digit code which will popup after you confirm. This will help us connect with you without any personally identifiable information. Privacy is at the core of our app. Please say yes to proceed.']
+        botT = ['We are holding your hand tightly at this time of your need. We would like to contact you back with a follow-up human or legal assistance for this we will be generating a 16 digit code which will popup after you confirm. This will help us connect with you without any personally identifiable information. Privacy is at the core of our app. <b>Please say yes to proceed.</b>']
         suggestionChips = ['Yes','No']
         Context = 'attack.cnf.16dg'
     }
     else if (Context =='attack.cnf.16dg' && yesPhrases.includes(userT.toLowerCase())==true){
         digcode16 = new Date().getTime();
         digcode16 = digcode16.toString()+'234';
-        botT = ['Here is your 16 digit code. <br/><strong><center>'+ digcode16+'</center></strong>Please copy it. If you are done please say yes.']
+        botT = ['Here is your 16 digit code. <br/><strong><center>'+ digcode16+'</center></strong>This code has been copied to your clipboard by default. If you are done saving it, please say yes.']
+        navigator.clipboard.writeText(digcode16);
         suggestionChips = ['Yes']
         Context = 'attack.cnf.16dgy'
     }
@@ -286,7 +287,7 @@ async function chatProcess(Context,userT,digcode16){
         suggestionChips=[]
     }
     else if (Context =='attack.cnf.16dgy' && yesPhrases.includes(userT.toLowerCase())==true){
-        botT = ['Thank you once again for holding down. Now take a long deep breath and build the courage! Open up whatever you have to speak about what happened to you. Do not hesitate, to add everything you want us to know. We have held your hand tightly, we are with you at every step! Please tell us.']
+        botT = ['Thank you once again for holding down. Now take a long deep breath and build the courage! Open up whatever you have to speak about what happened to you. Do not hesitate, to add everything you want us to know. We have held your hand tightly, we are with you at every step! <b>Please tell us.</b>']
         Context = 'attack.cnf.tell1'
         suggestionChips=[]
     }
@@ -299,7 +300,7 @@ async function chatProcess(Context,userT,digcode16){
         Context = 'attack.cnf.tellask'
     }
     else if (Context =='attack.cnf.tellask' && noPhrases.includes(userT.toLowerCase())==true){
-        botT = ['Thank you for trusting us! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. If you want human assistance please tap a yes. If no then type no.']
+        botT = ['Thank you for trusting us! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. <b>If you want human assistance, please tap a yes. If no, then tap no.</b>']
         suggestionChips=['Yes','No']
         Context = 'attack.cnf.comp'
     }
@@ -309,64 +310,64 @@ async function chatProcess(Context,userT,digcode16){
         suggestionChips=[]
     }
     else if (Context == 'attack.cnf.tell2'){
-        botT=['Thank you for your details! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. If you want human assistance please tap a yes. If no then type no.']
+        botT=['Thank you for your details! We support you during your tough time, but we want you to get calm. Now that you have told all that you know, the ball is in our court and we will try everything possible to get you justice. We may report this to a nearby NGO for human assistance but only if you allow us to. <b>If you want human assistance, please tap a yes. If no, then type no.</b>']
         now = new Date().getTime()
         updateDesc(userT,now)
         suggestionChips=['Yes','No']
         Context = 'attack.cnf.comp'
     }
     else if (Context == 'attack.cnf.comp' && yesPhrases.includes(userT.toLowerCase())==true){
-        botT = ['Thank you for providing your consent, your information will not be shared with the NGO now but in order for it to contact you we request you to please share your email id where out partner NGO (include a name here) might contact you. Your information will not be shared by us to the NGO until you allow us to, but the NGO will ask for your 16 digit code in its email. Only when you provide the code they will be able to access hear your ordeal.']
+        botT = ['Thank you for providing your consent, your information will not be shared with the NGO now, but in order for it to contact you we request you to <b>please share your Email ID where out partner NGO might contact you</b>. Your information will not be shared by us to the NGO until you allow us to, but the NGO will ask for your 16 digit code in its email. Only when you provide the code they will be able to access hear your ordeal.']
         Context = 'attack.email.ngo'
         suggestionChips=[]
     }
     else if(Context == 'attack.email.ngo'){
-        botT = ['Thank you so much! Any harassment or bullying is criminal act. If you want us to report the matter to the legal authorities please say yes. Again your information will not be shared until you share your code with them. If you do not want this say a no.']
+        botT = ['Thank you so much! Any harassment or bullying is a criminal act. <b>If you want us to report the matter to the legal authorities, please say yes</b>. Again, your information will not be shared until you share your 16 digit code with them. <b>If you do not want this, tap no.</b>']
         userEmail = userT
         ngoUpdate(digcode16,'yes',userEmail);
         suggestionChips = ['Yes','No']
         Context = 'attack.police.ask'
     }
     else if (Context == 'attack.cnf.comp' && noPhrases.includes(userT.toLowerCase())==true){
-        botT = ['We acknowledge your displeasure and accept it. Human assistance from our partner organization is safe and private. Your information will not be shared until you agree to. But if has been denied then we respect your opinion.',
-        'Harassment or bullying of any kind is a criminal act. If you want us to provide you a legal assistance through police, please say yes or else say no.']
+        botT = ['We acknowledge your displeasure and accept it. Human assistance from our partner organization is safe and private. Your information will not be shared until you agree to. But if it has been denied, then we respect your opinion.',
+        'Harassment or bullying of any kind is a criminal act. If you want us to provide you legal assistance through police, <b>please say yes or else say no.</b>']
         ngoUpdate(digcode16,'no');
         suggestionChips = ['Yes','No']
         Context = 'attack.police.ask'
         $userSaying.disabled=true
     }
     else if (Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true && userEmail!=null){
-        botT = ['Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to.',
-        'In case you want any other help from us please let us know. If nothing else, please say "I have nothing" and we will close this session for you.']
+        botT = ['Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you, in case you have agreed to.',
+        'If you wish to seek any other help from us, please let us know. We\' be glad to help you! If nothing else, please say "I have nothing" and we will close this session for you.']
         policeUpdate(digcode16,'yes',userEmail);
         suggestionChips=[]
         Context =  'start'
     }
     else if(Context == 'attack.police.ask' && yesPhrases.includes(userT.toLowerCase())==true && userEmail==null){
-        botT = ['Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to. Please also provide your email so that we police can contact you.']
+        botT = ['Thank you for your ascent. We support you in all your decisions and situations, please remain strong while lend a human help to you in case you have agreed to. Please also provide your email so that legal authorities can contact you.']
         suggestionChips=[]
         Context =  'police.email.ask'
     }
     else if(Context == 'police.email.ask'){
-        botT = ['In case you want any other help from us please let us know. If nothing else, please say "I have nothing" and we will close this session for you.']
+        botT = ['If you wish to seek any other help from us, please let us know. We\' be glad to help you! If nothing else, please say "I have nothing" and we will close this session for you.']
         userEmail = userT
         policeUpdate(digcode16,'yes',userEmail);
         suggestionChips=[]
         Context='start'
     }
     else if (Context == 'attack.police.ask' && noPhrases.includes(userT.toLowerCase())==true){
-        botT = ['Thank you for your response. We acknowledge that you do not want legal assistance through the police and we respect it. But when police try to help you through our way, we always make sure that there is no intimidation. Strong judicial oversight is always maintained through partner organizations. But never mind, in case you want to know anything else. Please let us know.']
+        botT = ['Thank you for your response. We acknowledge that you do not want legal assistance through the police and we respect it. But when police tries to help you through us, we always make sure that there is no intimidation. Strong judicial oversight is always maintained through partner organizations. But never mind, in case you want to know anything else. Please let us know.']
         policeUpdate(digcode16,'no');
         Context =  'start'
         suggestionChips=[]
     }
     else if (Context == 'start' && userT.toLowerCase() == 'i have nothing'){
-        botT = ['Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!']
+        botT = ['Thank you for reaching us! Team Saathi wants to empower every person to open up about their unpleasant situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!']
         Context = 'exit'
         suggestionChips=[]
     }
     else if (Context == "start" && byePhrases.includes(userT.toLowerCase())==true){
-        botT = ['Thank you for reaching us! Team Saathi wants to empower every person to open up their bad situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!']
+        botT = ['Thank you for reaching us! Team Saathi wants to empower every person to open up about their unpleasant situations that occur whether at workplace or in public. We not only provide you support during the time you need us the most, but can also connect you with our partner NGO for human assistance and can also help report to legal authorities. If you have a friend in need, do spread the word about us. Thanks, Team Saathi!']
         suggestionChips = []
         Context = 'exit'
     }
